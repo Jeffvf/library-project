@@ -6,8 +6,9 @@
 
 .lib-body{
     display: grid;
-    grid-template-rows: 1fr 5fr;
-    gap: 10px
+    grid-template-rows: 1fr 7fr 1fr;
+    gap: 10px;
+    height: 100vh
 }
 
 #lib-header{
@@ -37,4 +38,17 @@
     border-color: black;
     border-radius: 5px;
     height: max-content; 
+}
+
+.lib-footer{
+    display:grid;
+    align-items: center;
+    justify-items: center;
+}
+
+button{
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
