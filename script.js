@@ -6,7 +6,7 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-
+        
         this.info = function () {
             if (this.read) {
                 return `${this.title} by ${this.author}, ${pages} pages, already read`;
@@ -18,9 +18,13 @@ class Book {
 
 function addBookToLibrary(title, author, pages, read){
     const book = new Book(title, author, pages, read);
-
+    
     myLibrary.push(book);
 }
+
+addBookToLibrary('Mistborn', 'Brandon Sanderson', 458, true);
+addBookToLibrary('Stormlight Archive', 'Brandon Sanderson', 1508, true);
+addBookToLibrary('Wheel of Time', 'Robert Jordan', 679, true);
 
 function displayBooks(){
     const lib = document.querySelector('.lib-structure');
@@ -31,3 +35,5 @@ function displayBooks(){
         lib.appendChild(div);
     }
 }
+
+displayBooks();
