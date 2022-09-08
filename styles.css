@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    background-color: beige;
+}
+
+#lib-header{
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    background-color: bisque;
+    border-style: solid;
+    border-color: black;
+    font-size: 30px;
+    padding: 20px;
+}
