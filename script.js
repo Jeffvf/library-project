@@ -25,6 +25,8 @@ function capitalizeFirstLetter(word){
 
 function displayBooks(){
     const lib = document.querySelector('.lib-books');
+    lib.innerHTML = "";
+    
     for(const book of myLibrary){
         let div = document.createElement('div');
         div.classList.add('card');
@@ -43,5 +45,25 @@ function displayBooks(){
         lib.appendChild(div);
     }
 }
+
+function displayForms(){
+    const title = prompt('Book title:');
+    const author = prompt('Book author:');
+    const pages = parseInt(prompt('Number of pages:'));
+    const read = prompt('Have you read it?', 'Yes/No');
+
+    if(title && author && pages && (read == 'Yes' || read== 'No')){
+        const status_read = read == 'Yes';
+        addBookToLibrary(title, author, pages, status_read);
+        displayBooks();
+    }
+    else{
+        alert('Invalid values');
+    }
+}
+
+const button = document.querySelector('#new-book-forms')
+
+button.addEventListener('click', displayForms)
 
 displayBooks();
