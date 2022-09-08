@@ -27,7 +27,7 @@ addBookToLibrary('Stormlight Archive', 'Brandon Sanderson', 1508, true);
 addBookToLibrary('Wheel of Time', 'Robert Jordan', 679, true);
 
 function displayBooks(){
-    const lib = document.querySelector('.lib-structure');
+    const lib = document.querySelector('.lib-books');
     for(const book of myLibrary){
         let div = document.createElement('div');
         div.classList.add('card')

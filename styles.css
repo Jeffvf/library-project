@@ -4,25 +4,37 @@
     background-color: beige;
 }
 
+.lib-body{
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    gap: 10px
+}
+
 #lib-header{
     display: grid;
     grid-template-columns: 1fr;
     text-align: center;
     background-color: bisque;
-    border-style: solid;
-    border-color: black;
+    border-bottom-style: solid;
     font-size: 30px;
     padding: 20px;
 }
 
 .lib-structure{
     display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
+
+.lib-books{
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-flow: row;
+    gap: 5px;
 }
 
 .card{
     border-style: solid;
     border-color: black;
     height: 30px;
+    border-radius: 10px;
 }
