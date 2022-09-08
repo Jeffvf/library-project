@@ -46,24 +46,24 @@ function displayBooks(){
     }
 }
 
-function displayForms(){
-    const title = prompt('Book title:');
-    const author = prompt('Book author:');
-    const pages = parseInt(prompt('Number of pages:'));
-    const read = prompt('Have you read it?', 'Yes/No');
+const modal = document.getElementById("myModal");
 
-    if(title && author && pages && (read == 'Yes' || read== 'No')){
-        const status_read = read == 'Yes';
-        addBookToLibrary(title, author, pages, status_read);
-        displayBooks();
-    }
-    else{
-        alert('Invalid values');
-    }
+const btn = document.getElementById('new-book-forms');
+
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
 }
 
-const button = document.querySelector('#new-book-forms')
+span.onclick = function() {
+    modal.style.display = "none";
+}
 
-button.addEventListener('click', displayForms)
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+}
 
 displayBooks();
