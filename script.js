@@ -24,6 +24,8 @@ function addBookToLibrary(title, author, pages, read){
 
 function displayBooks(){
     for(const book of myLibrary){
-        console.log(book.info());
+        let div = document.createElement('div');
+        div.innerHTML = `${book.info()}`;
+        document.body.appendChild(div);
     }
 }
