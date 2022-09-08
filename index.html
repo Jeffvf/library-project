@@ -25,10 +25,27 @@
         <!-- Modal content -->
         <div class="modal-content">
           <span class="close">&times;</span>
-          <p>Some text in the Modal..</p>
+          <form>
+            <div>
+                <label for="title">Title*</label>
+                <input id="title" type="text" required>
+            </div>
+            <div>
+                <label for="author">Author*</label>
+                <input id="author" type="text" required>
+            </div>
+            <div>
+                <label for="pages">Number of Pages*</label>
+                <input id="pages" type="number" required>
+            </div>
+            <div>
+                <input id="read" type="checkbox" required>
+                <label for="read">I already read this book</label>
+            </div>
+          </form>
         </div>
       
-      </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
