@@ -23,9 +23,11 @@ function addBookToLibrary(title, author, pages, read){
 }
 
 function displayBooks(){
+    const lib = document.querySelector('.lib-structure');
     for(const book of myLibrary){
         let div = document.createElement('div');
+        div.classList.add('card')
         div.innerHTML = `${book.info()}`;
-        document.body.appendChild(div);
+        lib.appendChild(div);
     }
 }

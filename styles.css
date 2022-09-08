@@ -14,3 +14,15 @@
     font-size: 30px;
     padding: 20px;
 }
+
+.lib-structure{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row;
+}
+
+.card{
+    border-style: solid;
+    border-color: black;
+    height: 30px;
+}
