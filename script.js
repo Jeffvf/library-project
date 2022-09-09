@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 class Book {
     constructor(title, author, pages, read) {
@@ -11,13 +11,9 @@ class Book {
 
 function addBookToLibrary(title, author, pages, read){
     const book = new Book(title, author, pages, read);
-    
     myLibrary.push(book);
+    displayBooks();
 }
-
-addBookToLibrary('Mistborn', 'Brandon Sanderson', 458, true);
-addBookToLibrary('Stormlight Archive', 'Brandon Sanderson', 1508, true);
-addBookToLibrary('Wheel of Time', 'Robert Jordan', 679, false);
 
 function capitalizeFirstLetter(word){
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -50,7 +46,11 @@ const modal = document.getElementById("myModal");
 
 const btn = document.getElementById('new-book-forms');
 
+const submitBtn = document.getElementById('insert-book');
+
 const span = document.getElementsByClassName("close")[0];
+
+const form = document.getElementById('book-forms');
 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -66,4 +66,16 @@ window.onclick = function(event) {
     }
 }
 
-displayBooks();
+form.addEventListener('submit', (form) => {
+    form.preventDefault(); 
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
+
+    addBookToLibrary(title, author, pages, read);
+    
+    document.getElementById('book-forms').reset();
+    modal.style.display = "none";
+});
