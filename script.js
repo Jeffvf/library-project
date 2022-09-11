@@ -26,7 +26,8 @@ function displayBooks(){
     for(const book of myLibrary){
         let div = document.createElement('div');
         div.classList.add('card');
-        div.innerHTML = `<h1>${book.title}</h1>`;
+        div.innerHTML += '<span class="close">&times;</span>';
+        div.innerHTML += `<h1>${book.title}</h1>`;
         for(const key in book){
             if(key == 'read'){
                 let status_read = book.read ? 'Already read' : 'Not read yet';

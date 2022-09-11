@@ -39,6 +39,7 @@
     border-color: black;
     border-radius: 5px;
     height: max-content; 
+    padding: 15px;
 }
 
 .lib-footer{
