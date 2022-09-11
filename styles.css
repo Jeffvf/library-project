@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Alice', serif;
 }
 
 .lib-body{
@@ -19,6 +20,7 @@
     border-bottom-style: solid;
     font-size: 30px;
     padding: 20px;
+    font-weight: bold;
 }
 
 .lib-structure{
