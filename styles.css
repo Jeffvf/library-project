@@ -49,6 +49,8 @@
 }
 
 button{
+    border-style: solid;
+    border-color: black;
     border-radius: 5px;
     padding: 10px;
     font-size: 20px;
@@ -122,4 +124,9 @@ input {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.read-button{
+    font-size: 15px;
+    color: white
 }
