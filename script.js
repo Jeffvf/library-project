@@ -26,7 +26,7 @@ function displayBooks(){
     for(const book of myLibrary){
         let div = document.createElement('div');
         div.classList.add('card');
-        div.innerHTML += '<span class="close">&times;</span>';
+        div.innerHTML += '<span class="delete-book">&times;</span>';
         div.innerHTML += `<h1>${book.title}</h1>`;
         for(const key in book){
             if(key == 'read'){
@@ -43,6 +43,22 @@ function displayBooks(){
     }
 }
 
+function refreshDeleteBtn(){
+    deleteBook = document.getElementsByClassName('delete-book');
+
+    deleteBook[deleteBook.length-1].addEventListener('click', event => {
+        const thisCard = event.composedPath()[1]; // select card
+        const title = thisCard.childNodes[1].textContent; // select book title
+
+        for(book of myLibrary){
+            if(book.title == title){
+                myLibrary.splice(book, 1);
+                displayBooks();
+            }
+        }
+    })
+}
+
 const modal = document.getElementById("myModal");
 
 const btn = document.getElementById('new-book-forms');
@@ -52,6 +68,8 @@ const submitBtn = document.getElementById('insert-book');
 const span = document.getElementsByClassName("close")[0];
 
 const form = document.getElementById('book-forms');
+
+let deleteBook = document.getElementsByClassName('delete-book');
 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -76,7 +94,7 @@ form.addEventListener('submit', (form) => {
     const read = document.getElementById('read').checked;
 
     addBookToLibrary(title, author, pages, read);
-    
+    refreshDeleteBtn();
     document.getElementById('book-forms').reset();
     modal.style.display = "none";
 });
