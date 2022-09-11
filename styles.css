@@ -88,6 +88,16 @@ form{
     grid-template-columns: repeat(3, 1fr);
 }
 
+label {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+input {
+    border-style: solid;
+    border-radius: 3px;
+}
+
 .close{
     justify-self: end;
 }
