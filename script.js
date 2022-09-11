@@ -41,22 +41,25 @@ function displayBooks(){
         }
         lib.appendChild(div);
     }
+    refreshDeleteBtn();
 }
 
 function refreshDeleteBtn(){
     deleteBook = document.getElementsByClassName('delete-book');
 
-    deleteBook[deleteBook.length-1].addEventListener('click', event => {
+    for(book of deleteBook){
+        book.addEventListener('click', event => {
         const thisCard = event.composedPath()[1]; // select card
         const title = thisCard.childNodes[1].textContent; // select book title
 
-        for(book of myLibrary){
-            if(book.title == title){
-                myLibrary.splice(book, 1);
+        for(let i = 0; i < myLibrary.length; i++){
+            if(myLibrary[i].title == title){
+                myLibrary.splice(i, 1);
                 displayBooks();
             }
         }
-    })
+        });
+    }
 }
 
 const modal = document.getElementById("myModal");
@@ -94,7 +97,6 @@ form.addEventListener('submit', (form) => {
     const read = document.getElementById('read').checked;
 
     addBookToLibrary(title, author, pages, read);
-    refreshDeleteBtn();
     document.getElementById('book-forms').reset();
     modal.style.display = "none";
 });
