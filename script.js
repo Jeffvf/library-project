@@ -30,9 +30,9 @@ function displayBooks(){
         div.innerHTML += `<h1>${book.title}</h1>`;
         for(const key in book){
             if(key == 'read'){
-                let status_read = book.read ? 'Already read' : 'Not read yet';
+                let status_read = book.read ? ['Already read', "green"] : ['Not read yet', "red"];
                 let newKey = capitalizeFirstLetter(key);
-                div.innerHTML += `<p><b>${newKey}:</b> ${status_read}</p>`;
+                div.innerHTML += `<p><b>${newKey}:</b> <button class="read-button" style="background-color:${status_read[1]}" type="button">${status_read[0]}</button></p>`;
             }
             else if(key != 'title'){
                 let newKey = capitalizeFirstLetter(key);
@@ -42,23 +42,41 @@ function displayBooks(){
         lib.appendChild(div);
     }
     refreshDeleteBtn();
+    refreshReadBtn();
 }
 
 function refreshDeleteBtn(){
     deleteBook = document.getElementsByClassName('delete-book');
 
-    for(book of deleteBook){
+    for(const book of deleteBook){
         book.addEventListener('click', event => {
-        const thisCard = event.composedPath()[1]; // select card
-        const title = thisCard.childNodes[1].textContent; // select book title
+            const thisCard = event.composedPath()[1]; // select card
+            const title = thisCard.childNodes[1].textContent; // select book title
 
-        for(let i = 0; i < myLibrary.length; i++){
-            if(myLibrary[i].title == title){
-                myLibrary.splice(i, 1);
-                displayBooks();
+            for(let i = 0; i < myLibrary.length; i++){
+                if(myLibrary[i].title == title){
+                    myLibrary.splice(i, 1);
+                    displayBooks();
+                }
             }
-        }
         });
+    }
+}
+
+function refreshReadBtn(){
+    readBtn = document.getElementsByClassName('read-button');
+
+    for(const btn of readBtn){
+        btn.addEventListener('click', event => {
+            const thisCard = event.composedPath()[1]; // select parent node (p)
+            const title = (thisCard.parentNode).childNodes[1].textContent; // select parent of p and book title
+            for(let i = 0; i < myLibrary.length; i++){
+                if(myLibrary[i].title == title){
+                    myLibrary[i].read = !(myLibrary[i].read);
+                    displayBooks();
+                }
+            }
+        })
     }
 }
 
@@ -73,6 +91,8 @@ const span = document.getElementsByClassName("close")[0];
 const form = document.getElementById('book-forms');
 
 let deleteBook = document.getElementsByClassName('delete-book');
+
+let readBtn = document.getElementsByClassName('read-button');
 
 btn.onclick = function() {
     modal.style.display = "block";
