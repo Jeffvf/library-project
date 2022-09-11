@@ -10,8 +10,14 @@ class Book {
 }
 
 function addBookToLibrary(title, author, pages, read){
-    const book = new Book(title, author, pages, read);
-    myLibrary.push(book);
+    for(const book of myLibrary){
+        if(book.title == title){
+            alert('Error! This book already exists in your library!');
+            return;
+        }
+    }
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
     displayBooks();
 }
 
